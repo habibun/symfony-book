@@ -8,3 +8,7 @@ symfony cloud:project:create --title="Guestbook" --plan=development
 symfony cloud:deploy
 symfony cloud:url -1
 symfony cloud:project:delete
+symfony server:log
+export APP_ENV=dev
+symfony cloud:logs --tail
+symfony cloud:ssh
