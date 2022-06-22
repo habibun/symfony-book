@@ -12,3 +12,4 @@ symfony server:log
 export APP_ENV=dev
 symfony cloud:logs --tail
 symfony cloud:ssh
+symfony console list make
