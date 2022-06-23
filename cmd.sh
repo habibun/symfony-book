@@ -38,6 +38,7 @@ symfony console make:entity Comment
 symfony composer req "admin:^4"
 symfony console make:admin:dashboard
 symfony console make:admin:crud
+symfony composer req "twig/intl-extra:^3"
 
 
 
