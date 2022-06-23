@@ -35,6 +35,10 @@ symfony var:export
 symfony console make:entity Conference
 symfony console make:migration
 symfony console make:entity Comment
+symfony composer req "admin:^4"
+symfony console make:admin:dashboard
+symfony console make:admin:crud
+
 
 
 
