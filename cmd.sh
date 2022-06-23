@@ -31,5 +31,10 @@ symfony run psql < dump.sql
 symfony cloud:tunnel:open
 symfony var:expose-from-tunnel
 symfony cloud:tunnel:close
+symfony var:export
+symfony console make:entity Conference
+symfony console make:migration
+symfony console make:entity Comment
+
 
 
