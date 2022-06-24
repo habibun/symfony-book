@@ -39,7 +39,7 @@ symfony composer req "admin:^4"
 symfony console make:admin:dashboard
 symfony console make:admin:crud
 symfony composer req "twig/intl-extra:^3"
-
-
-
-
+symfony console doctrine:migrations:migrate
+symfony cloud:env:sync
+symfony cloud:env:debug
+symfony cloud:env:debug --off
