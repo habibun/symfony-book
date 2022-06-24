@@ -60,3 +60,22 @@ APP_RUNTIME_ENV=prod symfony console secrets:generate-keys
 symfony console secrets:set AKISMET_KEY --env=prod
 symfony cloud:variable:create --sensitive=1 --level=project -y --name=env:SYMFONY_DECRYPTION_SECRET --value=`php -r 'echo base64_encode(include("config/secrets/prod/prod.decrypt.private.php"));'`
 rm -f config/secrets/prod/prod.decrypt.private.php
+symfony composer req phpunit --dev
+symfony console make:test TestCase SpamCheckerTest
+symfony php bin/phpunit
+symfony console secrets:set AKISMET_KEY --env=test
+symfony console doctrine:database:create --env=test
+symfony console doctrine:migrations:migrate -n --env=test
+APP_ENV=prod symfony console doctrine:database:create
+symfony php bin/phpunit tests/Controller/ConferenceControllerTest.php
+symfony composer req orm-fixtures --dev
+symfony console debug:autowiring encoder
+symfony console doctrine:fixtures:load --env=test
+symfony php bin/phpunit tests/Controller/ConferenceControllerTest.php
+symfony server:stop
+symfony server:start -d --env=test
+make tests
+symfony composer req "dama/doctrine-test-bundle:^6" --dev
+symfony composer req panther --dev
+symfony console make:test WebTestCase Controller\\ConferenceController
+symfony console make:test PantherTestCase Controller\\ConferenceController
