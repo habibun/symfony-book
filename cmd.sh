@@ -53,3 +53,10 @@ symfony run psql -c "INSERT INTO admin (id, username, roles, password) \
   '\$argon2id\$v=19\$m=65536,t=4,p=1\$BQG+jovPcunctc30xG5PxQ\$TiGbx451NKdo+g9vLtfkMy4KjASKSOcnNxjij4gTX1s')"
 symfony console make:auth
 symfony console debug:router
+symfony console secrets:set AKISMET_KEY
+symfony cloud:variable:create --sensitive=1 --level=project -y --name=env:AKISMET_KEY --value=abcdef
+symfony console secrets:generate-keys --env=prod
+APP_RUNTIME_ENV=prod symfony console secrets:generate-keys
+symfony console secrets:set AKISMET_KEY --env=prod
+symfony cloud:variable:create --sensitive=1 --level=project -y --name=env:SYMFONY_DECRYPTION_SECRET --value=`php -r 'echo base64_encode(include("config/secrets/prod/prod.decrypt.private.php"));'`
+rm -f config/secrets/prod/prod.decrypt.private.php
