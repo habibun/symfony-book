@@ -23,3 +23,5 @@
 ###> jetbrains/phpstorm ###
 /.idea
 ###< jetbrains/phpstorm ###
+
+/public/uploads

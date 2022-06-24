@@ -44,3 +44,4 @@ symfony cloud:env:sync
 symfony cloud:env:debug
 symfony cloud:env:debug --off
 symfony console make:subscriber TwigEventSubscriber
+symfony console make:form CommentFormType Comment
