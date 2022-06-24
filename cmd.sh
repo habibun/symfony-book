@@ -45,3 +45,11 @@ symfony cloud:env:debug
 symfony cloud:env:debug --off
 symfony console make:subscriber TwigEventSubscriber
 symfony console make:form CommentFormType Comment
+symfony console make:user Admin
+symfony console doctrine:migrations:migrate -n
+symfony console security:hash-password
+symfony run psql -c "INSERT INTO admin (id, username, roles, password) \
+  VALUES (nextval('admin_id_seq'), 'admin', '[\"ROLE_ADMIN\"]', \
+  '\$argon2id\$v=19\$m=65536,t=4,p=1\$BQG+jovPcunctc30xG5PxQ\$TiGbx451NKdo+g9vLtfkMy4KjASKSOcnNxjij4gTX1s')"
+symfony console make:auth
+symfony console debug:router
