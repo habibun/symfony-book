@@ -98,3 +98,11 @@ curl -s -I -X PURGE -u admin:admin `symfony var:export SYMFONY_PROJECT_DEFAULT_R
 symfony console make:command app:step:info
 curl -X PURGE -H 'x-purge-token: PURGE_NOW' `symfony cloud:env:url --pipe --primary`
 curl -X PURGE -H 'x-purge-token: PURGE_NOW' `symfony cloud:env:url --pipe --primary`conference_header
+mv assets/styles/app.css assets/styles/app.scss
+yarn add node-sass sass-loader --dev
+yarn add bootstrap @popperjs/core bs-custom-file-input --dev
+php -r "copy('https://symfony.com/uploads/assets/guestbook-5.4.zip', 'guestbook-5.4.zip');"
+unzip -o guestbook-5.4.zip
+rm guestbook-5.4.zip
+symfony run yarn dev
+symfony run -d yarn dev --watch
