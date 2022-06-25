@@ -84,3 +84,7 @@ symfony run -d --watch=config,src,templates,vendor symfony console messenger:con
 symfony console messenger:failed:show
 symfony console messenger:failed:retry
 symfony cloud:logs --worker=messages all
+symfony composer req workflow
+symfony console workflow:dump comment | dot -Tpng -o workflow.png
+symfony console debug:container workflow
+symfony console debug:autowiring workflow
