@@ -106,3 +106,5 @@ unzip -o guestbook-5.4.zip
 rm guestbook-5.4.zip
 symfony run yarn dev
 symfony run -d yarn dev --watch
+symfony console workflow:dump comment | dot -Tpng -o workflow.png
+symfony composer req "imagine/imagine:^1.2"
