@@ -88,3 +88,6 @@ symfony composer req workflow
 symfony console workflow:dump comment | dot -Tpng -o workflow.png
 symfony console debug:container workflow
 symfony console debug:autowiring workflow
+symfony composer req "twig/cssinliner-extra:^3" "twig/inky-extra:^3"
+symfony open:local:webmail
+symfony cloud:env:info enable_smtp on
