@@ -79,3 +79,8 @@ symfony composer req "dama/doctrine-test-bundle:^6" --dev
 symfony composer req panther --dev
 symfony console make:test WebTestCase Controller\\ConferenceController
 symfony console make:test PantherTestCase Controller\\ConferenceController
+symfony composer req doctrine-messenger
+symfony run -d --watch=config,src,templates,vendor symfony console messenger:consume async -vv
+symfony console messenger:failed:show
+symfony console messenger:failed:retry
+symfony cloud:logs --worker=messages all
