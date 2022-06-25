@@ -91,3 +91,10 @@ symfony console debug:autowiring workflow
 symfony composer req "twig/cssinliner-extra:^3" "twig/inky-extra:^3"
 symfony open:local:webmail
 symfony cloud:env:info enable_smtp on
+curl -s -I -X GET https://127.0.0.1:8000/
+rm -rf var/cache/dev/http_cache/
+curl -s -I -X PURGE -u admin:admin `symfony var:export SYMFONY_PROJECT_DEFAULT_ROUTE_URL`/admin/http-cache/
+curl -s -I -X PURGE -u admin:admin `symfony var:export SYMFONY_PROJECT_DEFAULT_ROUTE_URL`/admin/http-cache/conference_header
+symfony console make:command app:step:info
+curl -X PURGE -H 'x-purge-token: PURGE_NOW' `symfony cloud:env:url --pipe --primary`
+curl -X PURGE -H 'x-purge-token: PURGE_NOW' `symfony cloud:env:url --pipe --primary`conference_header
