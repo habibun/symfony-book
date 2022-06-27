@@ -111,3 +111,4 @@ symfony composer req "imagine/imagine:^1.2"
 symfony cloud:variable:create --sensitive=1 --level=project -y --name=env:MAILTO --value=ops@example.com
 symfony console secrets:set SLACK_DSN
 symfony console secrets:set SLACK_DSN --env=prod
+symfony composer req api
