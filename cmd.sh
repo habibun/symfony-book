@@ -112,3 +112,20 @@ symfony cloud:variable:create --sensitive=1 --level=project -y --name=env:MAILTO
 symfony console secrets:set SLACK_DSN
 symfony console secrets:set SLACK_DSN --env=prod
 symfony composer req api
+mkdir -p spa/src spa/public spa/assets/styles
+cp assets/styles/*.scss spa/assets/styles/
+yarn init -y
+symfony server:start -d --passthru=index.html
+yarn encore dev
+yarn add node-sass sass-loader
+API_ENDPOINT=`symfony var:export SYMFONY_PROJECT_DEFAULT_ROUTE_URL --dir=..` yarn encore dev
+API_ENDPOINT=`symfony var:export SYMFONY_PROJECT_DEFAULT_ROUTE_URL --dir=..` symfony run -d --watch=webpack.config.js yarn encore dev --watch
+symfony cloud:env:url --pipe --primary
+symfony cloud:variable:create --sensitive=1 --level=project -y --name=env:CORS_ALLOW_ORIGIN --value="^`symfony cloud:env:url --pipe --primary | sed 's#/$##' | sed 's#https://#https://spa.#'`$"
+symfony cloud:variable:create --sensitive=1 --level=project -y --name=env:API_ENDPOINT --value=`symfony cloud:env:url --pipe --primary`
+symfony cloud:deploy
+symfony cloud:url -1 --app=spa
+yarn global add cordova
+~/.yarn/bin/cordova platform add android
+API_ENDPOINT=`symfony var:export SYMFONY_PROJECT_DEFAULT_ROUTE_URL --dir=..` yarn encore production
+
