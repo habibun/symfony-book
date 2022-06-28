@@ -128,4 +128,6 @@ symfony cloud:url -1 --app=spa
 yarn global add cordova
 ~/.yarn/bin/cordova platform add android
 API_ENDPOINT=`symfony var:export SYMFONY_PROJECT_DEFAULT_ROUTE_URL --dir=..` yarn encore production
+symfony composer req twig/string-extra
+symfony console translation:extract fr --force --domain=messages
 
