@@ -130,4 +130,18 @@ yarn global add cordova
 API_ENDPOINT=`symfony var:export SYMFONY_PROJECT_DEFAULT_ROUTE_URL --dir=..` yarn encore production
 symfony composer req twig/string-extra
 symfony console translation:extract fr --force --domain=messages
+curl https://installer.blackfire.io/installer.sh | bash
+sudo blackfire php:install
+blackfire client:config --client-id=xxx --client-token=xxx
+symfony console secrets:set BLACKFIRE_SERVER_ID
+symfony console secrets:set BLACKFIRE_SERVER_TOKEN
+curl https://ifconfig.me/
+symfony server:prod
+symfony server:prod --off
+blackfire curl `symfony var:export SYMFONY_PROJECT_DEFAULT_ROUTE_URL`api
+curl -OLsS https://get.blackfire.io/blackfire-player.phar
+chmod +x blackfire-player.phar
+./blackfire-player.phar run --endpoint=`symfony var:export SYMFONY_PROJECT_DEFAULT_ROUTE_URL` .blackfire.yaml --variable "webmail_url=`symfony var:export MAILER_WEB_URL 2>/dev/null`" --variable="env=dev" -vv
+rm blackfire-player.phar
+./blackfire-player.phar run --endpoint=`symfony cloud:env:url --pipe --primary` .blackfire.yaml --variable "webmail_url=NONE" --variable="env=prod" -vv
 
