@@ -144,4 +144,11 @@ chmod +x blackfire-player.phar
 ./blackfire-player.phar run --endpoint=`symfony var:export SYMFONY_PROJECT_DEFAULT_ROUTE_URL` .blackfire.yaml --variable "webmail_url=`symfony var:export MAILER_WEB_URL 2>/dev/null`" --variable="env=dev" -vv
 rm blackfire-player.phar
 ./blackfire-player.phar run --endpoint=`symfony cloud:env:url --pipe --primary` .blackfire.yaml --variable "webmail_url=NONE" --variable="env=prod" -vv
+symfony remote:open
+blackfire curl `symfony cloud:env:url --pipe --primary`en/
+blackfire curl `symfony var:export SYMFONY_PROJECT_DEFAULT_ROUTE_URL`en/
+blackfire --debug curl `symfony var:export SYMFONY_PROJECT_DEFAULT_ROUTE_URL`en/
+blackfire --debug curl `symfony cloud:env:url --pipe --primary`en/
+symfony run composer dump-env prod
+ext install felixfbecker.php-debug
 
