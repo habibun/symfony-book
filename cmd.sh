@@ -151,4 +151,9 @@ blackfire --debug curl `symfony var:export SYMFONY_PROJECT_DEFAULT_ROUTE_URL`en/
 blackfire --debug curl `symfony cloud:env:url --pipe --primary`en/
 symfony run composer dump-env prod
 ext install felixfbecker.php-debug
+symfony composer req amqp-messenger
+symfony open:local:rabbitmq
+symfony cloud:tunnel:open
+symfony open:remote:rabbitmq
+symfony cloud:tunnel:close
 
