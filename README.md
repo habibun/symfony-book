@@ -52,8 +52,8 @@ Distributed under the MIT License. See **[LICENSE][license]** for more informati
 
 
 [//]: # (Links)
-[license]: https://github.com/habibun/symfony-api-platform/blob/main/LICENSE
+[license]: https://github.com/habibun/symfony-book/blob/main/LICENSE
 [symfony_website]: https://symfony.com/
 
-[v5]: https://github.com/habibun/symfony-api-platform/tree/v2
-[v5_tt]: https://github.com/habibun/symfony-api-platform/tree/v2 "Book for Symfony 5"
+[v5]: https://github.com/habibun/symfony-book/tree/v2
+[v5_tt]: https://github.com/habibun/symfony-book/tree/v2 "Book for Symfony 5"
