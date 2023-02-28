@@ -94,6 +94,19 @@ symfony run psql < dump.sql
 symfony var:export
 
 
+# It is now time to generate the Conference entity:
+symfony console make:entity Conference
+
+
+# Let's see what Doctrine generates:
+symfony console make:migration
+
+
+# You can now run the generated migration to update the local database schema:
+symfony console doctrine:migrations:migrate
+
+
+
 
 
 
