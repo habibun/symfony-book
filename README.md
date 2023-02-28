@@ -39,8 +39,7 @@ symfony server:start
 
 
 ## Learn More
-- [Symfony: The Fast Track](https://symfony.com/book)
-- [Doctrine](https://www.doctrine-project.org/)  
+- [Symfony: The Fast Track](https://symfony.com/book)  
 
 
 ## Related
