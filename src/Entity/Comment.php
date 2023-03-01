@@ -27,7 +27,7 @@ class Comment
     private ?\DateTimeImmutable $createdAt = null;
 
     #[ORM\ManyToOne(inversedBy: 'comments')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?Conference $conference = null;
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -108,5 +108,10 @@ class Comment
         $this->photoFilename = $photoFilename;
 
         return $this;
+    }
+
+    public function __toString(): string
+    {
+        return (string) $this->getEmail();
     }
 }

@@ -106,6 +106,17 @@ symfony console make:migration
 symfony console doctrine:migrations:migrate
 
 
+# Let's add EasyAdmin as a project dependency
+symfony composer req "admin:^4"
+
+
+# generate a "web admin dashboard"
+symfony console make:admin:dashboard
+
+# Let's generate a CRUD for conferences:
+symfony console make:admin:crud
+
+
 
 
 
