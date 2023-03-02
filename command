@@ -117,7 +117,11 @@ symfony console make:admin:dashboard
 symfony console make:admin:crud
 
 
+# creation of a Git branch:
+git checkout -b sessions-in-db
 
+
+# 
 
 
 
