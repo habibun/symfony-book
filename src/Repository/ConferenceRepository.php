@@ -38,6 +38,10 @@ class ConferenceRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+    public function findAll(): array
+    {
+        return $this->findBy([], ['year' => 'ASC', 'city' => 'ASC']);
+    }
 
 //    /**
 //     * @return Conference[] Returns an array of Conference objects

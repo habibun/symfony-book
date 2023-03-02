@@ -121,7 +121,11 @@ symfony console make:admin:crud
 git checkout -b sessions-in-db
 
 
-# 
+# generate a subscriber
+symfony console make:subscriber TwigEventSubscriber
+
+
+
 
 
 
