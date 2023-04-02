@@ -10,7 +10,7 @@ Please check the [projects](#projects) section for more details.
 
 
 ## Projects
-<details><summary>Book for Symfony 5</summary>  
+<details><summary>Symfony 5</summary>  
 <p>  
 
 <img
