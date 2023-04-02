@@ -15,13 +15,13 @@ Please check the [projects](#projects) section for more details.
 
 <img
 src="url"
-alt="Book for Symfony 5"
+alt="Symfony: The Fast Track v5"
 width="50%"
 />
 
 **Code:** https://github.com/habibun/symfony-book/tree/v5  
 **Resources:**
-- [Book for Symfony 5](https://symfony.com/doc/5.4/the-fast-track/en/index.html)
+- [Symfony: The Fast Track v5](https://symfony.com/doc/5.4/the-fast-track/en/index.html)
 
 ##### Prerequisites: [Symfony CLI][symfony_cli], [PHP][php], [Composer][composer], [Git][git], [PostgreSQL][postgre_sql], [Docker][docker], [Docker Compose][docker_compose]
 
