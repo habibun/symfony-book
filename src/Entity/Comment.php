@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\CommentRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: CommentRepository::class)]
 #[ORM\HasLifecycleCallbacks]
@@ -15,12 +16,16 @@ class Comment
     #[ORM\Column]
     private ?int $id = null;
 
+    #[Assert\NotBlank]
     #[ORM\Column(length: 255)]
     private ?string $author = null;
 
+    #[Assert\NotBlank]
     #[ORM\Column(type: Types::TEXT)]
     private ?string $text = null;
 
+    #[Assert\NotBlank]
+    #[Assert\Email]
     #[ORM\Column(length: 255)]
     private ?string $email = null;
 

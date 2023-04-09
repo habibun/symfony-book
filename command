@@ -124,6 +124,9 @@ git checkout -b sessions-in-db
 # generate a subscriber
 symfony console make:subscriber TwigEventSubscriber
 
+# generate form
+symfony console make:form CommentFormType Comment
+
 
 
 
