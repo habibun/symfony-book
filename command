@@ -134,7 +134,8 @@ symfony console make:user Admin
 
 
 # generate the password hash
-generate the password hash
+symfony console security:hash-password
+
 
 
 # insert new user
@@ -144,3 +145,8 @@ symfony run psql -c "INSERT INTO admin (id, username, roles, password) \
 
 
 # create an authenticator:
+symfony console make:auth
+
+
+# Storing Secrets
+symfony console secrets:set AKISMET_KEY
