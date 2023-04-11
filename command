@@ -134,3 +134,26 @@ symfony console debug:autowiring encoder
 # Loading Fixtures
 symfony console doctrine:fixtures:load --env=test
 
+# Consuming Messages
+symfony console messenger:consume async -vv
+
+# Running Workers in the Background
+symfony run -d --watch=config,src,templates,vendor symfony console messenger:consume async -vv
+
+# Logs
+symfony server:log
+
+# list all background workers managed for the current project
+symfony server:status
+
+# Inspect failed messages
+symfony console messenger:failed:show
+
+
+# retry failed messages
+symfony console messenger:failed:retry
+
+
+# To get logs for a worker cloud
+symfony cloud:logs --worker=messages all
+

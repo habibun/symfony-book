@@ -26,10 +26,15 @@ reset-db: ## reset database
 .PHONY: start
 start: ## run symfony local web server in the background
 	symfony server:start -d
+	symfony run -d --watch=config,src,templates,vendor symfony console messenger:consume async -vv
 
-.PHONY: log
-log: ## display local web server logs
+.PHONY: log-symfony
+log-symfony: ## display local web server logs
 	symfony server:log
+
+.PHONY: log-docker
+log-docker: ## display docker compose logs
+	docker compose logs -f
 
 tests:
 	symfony console doctrine:database:drop --force --env=test || true
