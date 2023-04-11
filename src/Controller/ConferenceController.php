@@ -47,9 +47,8 @@ class ConferenceController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $comment->setConference($conference);
-
             if ($photo = $form['photo']->getData()) {
-                $filename = bin2hex(random_bytes(6)) . '.' . $photo->guessExtension();
+                $filename = bin2hex(random_bytes(6)).'.'.$photo->guessExtension();
                 try {
                     $photo->move($photoDir, $filename);
                 } catch (FileException $e) {
@@ -59,12 +58,15 @@ class ConferenceController extends AbstractController
             }
 
             $this->entityManager->persist($comment);
+            $this->entityManager->flush();
+
             $context = [
                 'user_ip' => $request->getClientIp(),
                 'user_agent' => $request->headers->get('user-agent'),
                 'referrer' => $request->headers->get('referer'),
                 'permalink' => $request->getUri(),
             ];
+
             $this->bus->dispatch(new CommentMessage($comment->getId(), $context));
 
             return $this->redirectToRoute('conference', ['slug' => $conference->getSlug()]);
