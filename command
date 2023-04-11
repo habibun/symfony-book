@@ -157,3 +157,6 @@ symfony console messenger:failed:retry
 # To get logs for a worker cloud
 symfony cloud:logs --worker=messages all
 
+# generate a visual representation of workflow
+symfony console workflow:dump comment | dot -Tpng -o workflow.png
+
