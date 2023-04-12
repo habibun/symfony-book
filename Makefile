@@ -27,7 +27,6 @@ reset-db: ## reset database
 .PHONY: start
 start: ## run symfony local web server in the background
 	symfony server:start -d
-	symfony run -d --watch=config,src,templates,vendor symfony console messenger:consume async -vv
 
 .PHONY: log-symfony
 log-symfony: ## display local web server logs

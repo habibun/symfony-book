@@ -160,3 +160,6 @@ symfony cloud:logs --worker=messages all
 # generate a visual representation of workflow
 symfony console workflow:dump comment | dot -Tpng -o workflow.png
 
+# You can open the webmail from a terminal:
+symfony open:local:webmail
+
