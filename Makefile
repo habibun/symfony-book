@@ -28,6 +28,10 @@ reset-db: ## reset database
 start: ## run symfony local web server in the background
 	symfony server:start -d
 
+.PHONY: yarn-watch
+yarn-watch: ## watch JS and CSS changes
+	symfony run -d yarn dev --watch
+
 .PHONY: log-symfony
 log-symfony: ## display local web server logs
 	symfony server:log
