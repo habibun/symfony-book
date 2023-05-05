@@ -149,10 +149,8 @@ symfony server:status
 # Inspect failed messages
 symfony console messenger:failed:show
 
-
 # retry failed messages
 symfony console messenger:failed:retry
-
 
 # To get logs for a worker cloud
 symfony cloud:logs --worker=messages all
@@ -162,4 +160,15 @@ symfony console workflow:dump comment | dot -Tpng -o workflow.png
 
 # You can open the webmail from a terminal:
 symfony open:local:webmail
+
+# Invalidate the homepage and the conference header via the following cURL calls:
+curl -s -I -X PURGE -u admin:admin `symfony var:export SYMFONY_PROJECT_DEFAULT_ROUTE_URL`/admin/http-cache/
+curl -s -I -X PURGE -u admin:admin `symfony var:export SYMFONY_PROJECT_DEFAULT_ROUTE_URL`/admin/http-cache/conference_header
+
+# request using curl
+curl -s -I -X GET https://127.0.0.1:8000/
+
+# make command
+symfony console make:command app:step:info
+
 

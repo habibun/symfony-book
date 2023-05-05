@@ -5,10 +5,5 @@
 {% block body %}
     <h2>Give your feedback!</h2>
 
-    {% for conference in conferences %}
-        <h4>{{ conference }}</h4>
-        <p>
-            <a href="{{ path('conference', { slug: conference.slug }) }}">View</a>
-        </p>
-    {% endfor %}
+    {{ render_esi(path('conference_header')) }}
 {% endblock %}
