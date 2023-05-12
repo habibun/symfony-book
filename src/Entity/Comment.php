@@ -6,37 +6,55 @@ use App\Repository\CommentRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: CommentRepository::class)]
 #[ORM\HasLifecycleCallbacks]
+#[ApiResource(
+        collectionOperations: ['get' => ['normalization_context' => ['groups' => 'comment:list']]],
+    itemOperations: ['get' => ['normalization_context' => ['groups' => 'comment:item']]],
+    order: ['createdAt' => 'DESC'],
+    paginationEnabled: false,
+)]
+#[ApiFilter(SearchFilter::class, properties: ['conference' => 'exact'])]
 class Comment
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['comment:list', 'comment:item'])]
     private ?int $id = null;
 
     #[Assert\NotBlank]
     #[ORM\Column(length: 255)]
+    #[Groups(['comment:list', 'comment:item'])]
     private ?string $author = null;
 
     #[Assert\NotBlank]
     #[ORM\Column(type: Types::TEXT)]
+    #[Groups(['comment:list', 'comment:item'])]
     private ?string $text = null;
 
     #[Assert\NotBlank]
     #[Assert\Email]
     #[ORM\Column(length: 255)]
+    #[Groups(['comment:list', 'comment:item'])]
     private ?string $email = null;
 
     #[ORM\Column]
+    #[Groups(['comment:list', 'comment:item'])]
     private ?\DateTimeImmutable $createdAt = null;
 
     #[ORM\ManyToOne(inversedBy: 'comments')]
     #[ORM\JoinColumn(nullable: true)]
+    #[Groups(['comment:list', 'comment:item'])]
     private ?Conference $conference = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Groups(['comment:list', 'comment:item'])]
     private ?string $photoFilename = null;
 
     #[ORM\Column(type: 'string', length: 255, options: ["default" => "submitted"])]
