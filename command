@@ -171,4 +171,10 @@ curl -s -I -X GET https://127.0.0.1:8000/
 # make command
 symfony console make:command app:step:info
 
+# Set API_ENDPOINT environment variable
+API_ENDPOINT=`symfony var:export SYMFONY_PROJECT_DEFAULT_ROUTE_URL --dir=..` yarn encore dev
+
+# Set API_ENDPOINT environment variable You could also run in the background now:
+API_ENDPOINT=`symfony var:export SYMFONY_PROJECT_DEFAULT_ROUTE_URL --dir=..` symfony run -d --watch=webpack.config.js yarn encore dev --watch
+
 
