@@ -5,10 +5,12 @@ mounts:
 relationships:
     database: "database:postgresql"
     redis: "rediscache:redis"
+    rabbitmq: "queue:rabbitmq"
 
 runtime:
     extensions:
         # other extensions
+        - amqp
         - pdo_pgsql
         - redis
         # other extensions

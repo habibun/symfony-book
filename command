@@ -177,4 +177,6 @@ API_ENDPOINT=`symfony var:export SYMFONY_PROJECT_DEFAULT_ROUTE_URL --dir=..` yar
 # Set API_ENDPOINT environment variable You could also run in the background now:
 API_ENDPOINT=`symfony var:export SYMFONY_PROJECT_DEFAULT_ROUTE_URL --dir=..` symfony run -d --watch=webpack.config.js yarn encore dev --watch
 
+# Exploring the RabbitMQ Web Management Interface
+symfony open:local:rabbitmq
 
