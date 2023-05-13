@@ -4,11 +4,13 @@ mounts:
 
 relationships:
     database: "database:postgresql"
+    redis: "rediscache:redis"
 
 runtime:
     extensions:
         # other extensions
         - pdo_pgsql
+        - redis
         # other extensions
 
 workers:
